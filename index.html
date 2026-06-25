@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Photography</title>
+    <link rel="stylesheet" href="./css/shared.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="./index.html" class="nav-logo">Joe's <span>Photography</span></a>
+        <ul class="nav-links">
+            <li><a href="./index.html" class="active">Home</a></li>
+            <li><a href="./assets/photos/photos.html">Gallery</a></li>
+            <li><a href="./assets/about/about.html">About</a></li>
+            <li><a href="./assets/hire/hire.html">Hire Me</a></li>
+            <li><a href="./assets/contact/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Joe's <span>Photography</span></h1>
+            <p>Capturing moments that last a lifetime — from breathtaking landscapes to intimate portraits.</p>
+            <a href="./assets/photos/photos.html" class="btn-primary">View Gallery</a>
+        </div>
+    </header>
+
+    <main class="search-section">
+        <h2 class="section-title">Search Photos</h2>
+        <div class="divider"></div>
+
+        <form class="search-form" action="#">
+            <label for="search-input" class="sr-only">Search Photos</label>
+            <div class="search-bar">
+                <input type="text" class="userInput" placeholder="Search landscapes, portraits..." id="search-input">
+                <button type="submit" id="search">Search</button>
+            </div>
+        </form>
+
+        <section class="results"></section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-name">Joe's Photography</p>
+        <p>Created by Joshua Power &nbsp;&middot;&nbsp; Powered by Pexels API</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

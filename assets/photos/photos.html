@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery — Joe's Photography</title>
+    <link rel="stylesheet" href="../../css/shared.css">
+    <link rel="stylesheet" href="photos.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../../index.html" class="nav-logo">Joe's <span>Photography</span></a>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="photos.html" class="active">Gallery</a></li>
+            <li><a href="../about/about.html">About</a></li>
+            <li><a href="../hire/hire.html">Hire Me</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="gallery-header">
+        <div class="header-inner">
+            <h1 class="section-title">Photo <span class="accent">Gallery</span></h1>
+            <div class="divider"></div>
+            <p>Browse by category or use the search on the home page for something specific.</p>
+        </div>
+    </header>
+
+    <main class="gallery-main">
+        <div class="category-filters">
+            <button class="filter-btn active" data-query="landscapes">Landscapes</button>
+            <button class="filter-btn" data-query="portrait photography">Portraits</button>
+            <button class="filter-btn" data-query="wedding photography">Weddings</button>
+            <button class="filter-btn" data-query="nature photography">Nature</button>
+            <button class="filter-btn" data-query="street photography">Street</button>
+        </div>
+
+        <section class="results gallery-grid"></section>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-name">Joe's Photography</p>
+        <p>By Joshua Power &nbsp;&middot;&nbsp; Powered by Pexels</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../../app.js"></script>
+    <script>
+        $('.filter-btn').on('click', function () {
+            $('.filter-btn').removeClass('active');
+            $(this).addClass('active');
+            app.getImages($(this).data('query'));
+        });
+    </script>
+</body>
+</html>

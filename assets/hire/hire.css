@@ -1,0 +1,226 @@
+.hire-hero {
+    position: relative;
+    height: 48vh;
+    min-height: 300px;
+    background-image: url('../camera-background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+}
+
+/* ---- Packages ---- */
+.packages-section {
+    padding: 7rem 2rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.package-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.package-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.package-card.featured {
+    border-color: var(--accent);
+    transform: scale(1.03);
+}
+
+.package-card.featured:hover {
+    transform: scale(1.03) translateY(-4px);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #0d0d0d;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.3rem 1.1rem;
+    white-space: nowrap;
+}
+
+.package-header {
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.package-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.package-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.package-features {
+    list-style: none;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.package-features li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding-left: 1.4rem;
+    position: relative;
+}
+
+.package-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.pkg-btn {
+    display: block;
+    text-align: center;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.package-card.featured .pkg-btn {
+    background: var(--accent);
+    color: #0d0d0d;
+}
+
+.pkg-btn:hover {
+    background: var(--accent);
+    color: #0d0d0d;
+}
+
+/* ---- Process ---- */
+.process-section {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 6rem 2rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.step-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--accent);
+    opacity: 0.35;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+}
+
+.step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.step p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+    .packages-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .package-card.featured {
+        transform: none;
+    }
+    .package-card.featured:hover {
+        transform: translateY(-4px);
+    }
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
