@@ -8,7 +8,24 @@ app.currentIndex = 0;
 
 app.init = function () {
     app.buildLightbox();
-    app.getImages('landscapes');
+    app.getCurated();
+};
+
+// Load a small, curated set of high-quality "portfolio" photos by default.
+app.getCurated = function () {
+    $.ajax({
+        url: 'https://api.pexels.com/v1/curated',
+        method: 'GET',
+        dataType: 'JSON',
+        headers: { Authorization: app.key },
+        data: { per_page: 12 }
+    }).then(function (result) {
+        $('.results').empty();
+        app.photos = result.photos || [];
+        app.displayImages(app.photos);
+    }).catch(function () {
+        $('.results').html('<p class="no-results">Could not load photos. Check your API key.</p>');
+    });
 };
 
 app.buildLightbox = function () {
@@ -102,7 +119,7 @@ app.getImages = function (query) {
         method: 'GET',
         dataType: 'JSON',
         headers: { Authorization: app.key },
-        data: { query: query, per_page: 20, orientation: 'landscape' }
+        data: { query: query, per_page: 12, orientation: 'landscape' }
     }).then(function (result) {
         $('.results').empty();
         app.photos = result.photos || [];
