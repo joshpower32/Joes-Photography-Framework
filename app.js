@@ -1,7 +1,28 @@
 const app = {};
 
 // Get a free instant key at https://www.pexels.com/api/
+// Only needed for the LIVE SEARCH feature — the default gallery below is
+// pinned to direct image URLs and loads instantly with no API call.
 app.key = '4SuTxTJkprUsJAP1CZoSkd412wKx4EuXt7xfK5HzZf9DreiCe8Wv0twm';
+
+// Default "portfolio" gallery — pinned Pexels shots (no API roundtrip, no
+// pop-in, and the gallery never changes under you). To swap a photo, browse
+// pexels.com and paste the image address; for a real client, replace these
+// with their own photos.
+app.curatedPhotos = [
+    { src: { medium: "https://images.pexels.com/photos/34960157/pexels-photo-34960157.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/34960157/pexels-photo-34960157.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Silhouette of a hiker walking with distant volcanoes and a sea of clouds in Guatemala.", photographer: "Diego Girón", photographer_url: "https://www.pexels.com/@diego-giron-464799823" },
+    { src: { medium: "https://images.pexels.com/photos/37911536/pexels-photo-37911536.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/37911536/pexels-photo-37911536.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "A serene outdoor pool next to a sunlit stone house with palm tree and lush greenery.", photographer: "Nuri Askerhan", photographer_url: "https://www.pexels.com/@nuri-askerhan-2158943795" },
+    { src: { medium: "https://images.pexels.com/photos/32603655/pexels-photo-32603655.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/32603655/pexels-photo-32603655.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "A Great Cormorant stands on a rock by the shoreline, gazing into the distance.", photographer: "János Csatlós", photographer_url: "https://www.pexels.com/@sataz" },
+    { src: { medium: "https://images.pexels.com/photos/15393678/pexels-photo-15393678.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/15393678/pexels-photo-15393678.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Stunning view of a coastal cliff with people sightseeing, clear skies, and blue ocean.", photographer: "Alex Does Pictures", photographer_url: "https://www.pexels.com/@alex-does-pictures-33201512" },
+    { src: { medium: "https://images.pexels.com/photos/6306236/pexels-photo-6306236.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/6306236/pexels-photo-6306236.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Woman in traditional hijab and dress standing in a doorway in Marrakesh", photographer: "Piotr Arnoldes", photographer_url: "https://www.pexels.com/@piotr-arnoldes-7862031" },
+    { src: { medium: "https://images.pexels.com/photos/36704256/pexels-photo-36704256.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/36704256/pexels-photo-36704256.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Boats and swimmers in azure waters off the coast of Cetara, Campania, Italy.", photographer: "Alexey Dulin", photographer_url: "https://www.pexels.com/@alexey-dulin-19422188" },
+    { src: { medium: "https://images.pexels.com/photos/31349058/pexels-photo-31349058.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/31349058/pexels-photo-31349058.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Detailed view of St. Mark's Basilica and Bell Tower under clear blue sky in Venice, Italy.", photographer: "sn3k", photographer_url: "https://www.pexels.com/@sn3k-54158755" },
+    { src: { medium: "https://images.pexels.com/photos/37927742/pexels-photo-37927742.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/37927742/pexels-photo-37927742.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Stylish woman stands confidently in an urban architectural environment", photographer: "Ola Szkolda", photographer_url: "https://www.pexels.com/@olaszkolda" },
+    { src: { medium: "https://images.pexels.com/photos/37940566/pexels-photo-37940566.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/37940566/pexels-photo-37940566.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Scenic view of Meoto Iwa Rocks in Mie, Japan, symbolizing marriage and harmony.", photographer: "Giuseppe Paoletti", photographer_url: "https://www.pexels.com/@giusxpe" },
+    { src: { medium: "https://images.pexels.com/photos/37852931/pexels-photo-37852931.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/37852931/pexels-photo-37852931.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "A breathtaking aerial view of the vibrant waters and lush coastline of the Windward Islands in French Polynesia.", photographer: "Eliza Ross", photographer_url: "https://www.pexels.com/@eliza-ross-2161941282" },
+    { src: { medium: "https://images.pexels.com/photos/36656004/pexels-photo-36656004.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/36656004/pexels-photo-36656004.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "A European Starling sits on a bare tree branch under a clear blue sky.", photographer: "Sergey Antonov", photographer_url: "https://www.pexels.com/@sergey-antonov-2159115697" },
+    { src: { medium: "https://images.pexels.com/photos/6604701/pexels-photo-6604701.jpeg?auto=compress&cs=tinysrgb&w=640", large2x: "https://images.pexels.com/photos/6604701/pexels-photo-6604701.jpeg?auto=compress&cs=tinysrgb&w=1600" }, alt: "Relaxing balcony setup with chairs and table overlooking a sparkling blue sea", photographer: "Dimitris Mourousiadis", photographer_url: "https://www.pexels.com/@dimi" },
+];
 
 app.photos = [];
 app.currentIndex = 0;
@@ -11,21 +32,11 @@ app.init = function () {
     app.getCurated();
 };
 
-// Load a small, curated set of high-quality "portfolio" photos by default.
+// Show the pinned default gallery — instant, no network request needed.
 app.getCurated = function () {
-    $.ajax({
-        url: 'https://api.pexels.com/v1/curated',
-        method: 'GET',
-        dataType: 'JSON',
-        headers: { Authorization: app.key },
-        data: { per_page: 12 }
-    }).then(function (result) {
-        $('.results').empty();
-        app.photos = result.photos || [];
-        app.displayImages(app.photos);
-    }).catch(function () {
-        $('.results').html('<p class="no-results">Could not load photos. Check your API key.</p>');
-    });
+    $('.results').empty();
+    app.photos = app.curatedPhotos;
+    app.displayImages(app.photos);
 };
 
 app.buildLightbox = function () {
